@@ -1,0 +1,23 @@
+@{
+	Layout = "_Layout";
+}
+
+@using PierresBakery.Extensions;
+
+<h2>Authentication with Identity:</h2>
+<hr />
+@if (User.Identity.IsAuthenticated)
+{
+  <p>Hello @User.GetFullName()</p>
+  <p>User Date of Birth: @User.GetLastTimeVisiting()</p>
+  
+  @using (Html.BeginForm("LogOff", "Account"))
+  {
+    <input type="submit" class="btn btn-primary" value="Log out" />
+  }
+}
+else
+{
+<p>@Html.ActionLink("Register", "Register")</p>
+<p>@Html.ActionLink("Log in", "Login")</p>
+}

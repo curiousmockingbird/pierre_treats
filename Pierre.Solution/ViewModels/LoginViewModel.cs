@@ -1,6 +1,6 @@
 using System;
 
-namespace RecipeBox.ViewModels
+namespace PierresBakery.ViewModels
 {
   public class LoginViewModel
   {

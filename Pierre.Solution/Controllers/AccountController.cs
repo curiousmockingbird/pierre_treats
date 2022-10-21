@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
-using RecipeBox.Models;
+using PierresBakery.Models;
 using System.Threading.Tasks;
-using PierresBakery.ViewModels;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using System;
+using PierresBakery.ViewModels;
 
 namespace PierresBakery.Controllers
 {
@@ -56,18 +56,18 @@ namespace PierresBakery.Controllers
 		}
 
 		[HttpPost]
-		public async Task<ActionResult> Login(LoginViewModel model)
-		{
-			Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, isPersistent: true, lockoutOnFailure: false);
-			if (result.Succeeded)
-			{
-				return RedirectToAction("Index");
-			}
-			else
-			{
-				return View();
-			}
-		}
+    public async Task<ActionResult> Login(LoginViewModel model)
+    {
+      Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, isPersistent: true, lockoutOnFailure: false);
+      if (result.Succeeded)
+      {
+        return RedirectToAction("Index");
+      }
+      else
+      {
+        return View();
+      }
+    }
 
     [HttpPost]
     public async Task<ActionResult> LogOff()

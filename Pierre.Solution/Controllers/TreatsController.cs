@@ -33,7 +33,7 @@ namespace PierresBakery.Controllers
 					var sortByPrice = _db.Treats.Where(entry => entry.User.Id == currentUser.Id).OrderByDescending(treat => treat.Price).ToList();
 					return View(sortByPrice);
 				default:
-					var sortByName = _db.Treats.Where(entry => entry.User.Id == currentUser.Id).OrderBy(treat => treat.Treat).ToList();
+					var sortByName = _db.Treats.Where(entry => entry.User.Id == currentUser.Id).OrderBy(treat => treat.TreatName).ToList();
 					return View(sortByName);
 			}
 		}
@@ -43,7 +43,7 @@ namespace PierresBakery.Controllers
 			var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 			var currentUser = await _userManager.FindByIdAsync(userId);
 			List<Flavor> userFlavors = _db.Flavors.Where(entry => entry.User.Id == currentUser.Id).ToList();
-			ViewBag.FlavorId = new SelectList(userFlavors, "FlavorId", "Flavor");
+			ViewBag.FlavorId = new SelectList(userFlavors, "FlavorId", "FlavorName");
 			return View();
 		}
 
@@ -68,7 +68,7 @@ namespace PierresBakery.Controllers
 		{
 			Treat thisTreat = _db.Treats
 				.Include(treat => treat.JoinEntities)
-				.ThenInclude(join => join.Recipe)
+				.ThenInclude(join => join.Treat)
 				.FirstOrDefault(treat => treat.TreatId == id);
 			return View(thisTreat);
 		}
@@ -81,7 +81,7 @@ namespace PierresBakery.Controllers
 			var currentUser = await _userManager.FindByIdAsync(userId);
 
 			List<Flavor> userFlavors = _db.Flavors.Where(entry => entry.User.Id == currentUser.Id).ToList();
-			ViewBag.FlavorId = new SelectList(userFlavors, "FlavorId", "Flavor");
+			ViewBag.FlavorId = new SelectList(userFlavors, "FlavorId", "FlavorName");
 
 			return View(userFlavors);
 		}
@@ -126,11 +126,5 @@ namespace PierresBakery.Controllers
 			return RedirectToAction("Index");
 		}
 
-		public ActionResult Search(int price)
-		{
-			List<Treat> thisSearch = _db.Treats.Where(treat => treat.Price.Contains(price)).ToList();
-			ViewBag.SearchPrice = price;
-			return View(thisSearch);
-		}
   }
 }

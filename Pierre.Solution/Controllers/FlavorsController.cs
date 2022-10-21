@@ -51,7 +51,7 @@ namespace PierresBakery.Controllers
 
     public ActionResult Details(int id)
     {
-      var thisFlavor = _db.Categories
+      var thisFlavor = _db.Flavors
           .Include(flavor => flavor.JoinEntities)
           .ThenInclude(join => join.Treat)
           .FirstOrDefault(flavor => flavor.FlavorId == id);
@@ -61,7 +61,7 @@ namespace PierresBakery.Controllers
     [HttpPost]
     public ActionResult Delete(int id)
     {
-      Category thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
+      Flavor thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
       _db.Flavors.Remove(thisFlavor);
       _db.SaveChanges();
       return RedirectToAction("Index");
