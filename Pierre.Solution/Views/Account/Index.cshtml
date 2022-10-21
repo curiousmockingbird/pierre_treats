@@ -9,7 +9,7 @@
 @if (User.Identity.IsAuthenticated)
 {
   <p>Hello @User.GetFullName()</p>
-  <p>User Date of Birth: @User.GetLastTimeVisiting()</p>
+  <p>Last time visiting us: @User.GetLastTimeVisiting()</p>
   
   @using (Html.BeginForm("LogOff", "Account"))
   {
@@ -18,6 +18,6 @@
 }
 else
 {
-<p>@Html.ActionLink("Register", "Register")</p>
+<p>@Html.ActionLink("Register", "Register", "Account")</p>
 <p>@Html.ActionLink("Log in", "Login")</p>
 }

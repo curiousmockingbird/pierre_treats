@@ -1,0 +1,20 @@
+@{
+	Layout = "_Layout";
+}
+
+@using PierresBakery.ViewModels;
+
+@model RegisterViewModel
+
+<h3>Create a new account</h3>
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post))
+{
+	<p>User name: @Html.TextBoxFor(user => user.UserName)</p>
+  <p>Provide your full name: @Html.TextBoxFor(user => user.FullName)</p>
+  <p>When did you last visited us: @Html.EditorFor(user => user.LastTimeVisiting)</p>
+	<p>Password :@Html.TextBoxFor(user => user.Password)</p>
+	<p>Confirm your password: @Html.TextBoxFor(user => user.ConfirmPassword)</p>
+
+	<input type="submit" value="Register Account" />
+}
