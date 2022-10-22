@@ -4,7 +4,7 @@
 
 @model PierresBakery.Models.Treat
 
-<h3>Create a new recipe</h3>
+<h3>Edit details for @Model.TreatName</h3>
 
 @using (Html.BeginForm())
 {
@@ -12,5 +12,5 @@
 <p>Price: @Html.TextBoxFor(model => model.Price)</p>
 	@Html.Label("Add treat's flavor:")
 	@Html.DropDownList("FlavorId")
-	<input type="submit" value="Create"/>
+	<input type="submit" value="Edit"/>
 }

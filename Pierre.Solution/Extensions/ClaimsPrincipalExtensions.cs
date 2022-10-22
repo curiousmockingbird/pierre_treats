@@ -12,8 +12,8 @@ namespace PierresBakery.Extensions
 		}
 		public static string GetAccountCreatedOn(this ClaimsPrincipal principal)
 		{
-			var lastTime = principal.Claims.FirstOrDefault(c => c.Type == "AccountCreatedOn");
-			return lastTime?.Value;
+			var createdOn = principal.Claims.FirstOrDefault(c => c.Type == "AccountCreatedOn");
+			return createdOn?.Value;
 		}
 	}
 }

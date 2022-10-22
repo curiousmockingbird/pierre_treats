@@ -28,7 +28,7 @@ namespace PierresBakery.Migrations
                 {
                     Id = table.Column<string>(type: "varchar(255) CHARACTER SET utf8mb4", nullable: false),
                     FullName = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    LastTimeVisiting = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    AccountCreatedOn = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UserName = table.Column<string>(type: "varchar(256) CHARACTER SET utf8mb4", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "varchar(256) CHARACTER SET utf8mb4", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "varchar(256) CHARACTER SET utf8mb4", maxLength: 256, nullable: true),

@@ -9,7 +9,7 @@ using PierresBakery.Models;
 namespace PierresBakery.Migrations
 {
     [DbContext(typeof(PierresBakeryContext))]
-    [Migration("20221021231623_Initial")]
+    [Migration("20221022153324_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -155,6 +155,9 @@ namespace PierresBakery.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("AccountCreatedOn")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -168,9 +171,6 @@ namespace PierresBakery.Migrations
 
                     b.Property<string>("FullName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<DateTime>("LastTimeVisiting")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("tinyint(1)");

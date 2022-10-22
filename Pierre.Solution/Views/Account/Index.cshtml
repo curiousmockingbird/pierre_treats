@@ -11,13 +11,17 @@
   <p>Hello @User.GetFullName()</p>
   <p>Last time visiting us: @User.GetAccountCreatedOn()</p>
   
+  <p> @Html.ActionLink("See all treats and flavors!", "Index", "Home")</p>
+  
   @using (Html.BeginForm("LogOff", "Account"))
   {
     <input type="submit" class="btn btn-primary" value="Log out" />
   }
+
 }
 else
 {
+<p>Thank you for your visit! </p>
 <p>@Html.ActionLink("Register", "Register", "Account")</p>
 <p>@Html.ActionLink("Log in", "Login")</p>
 }

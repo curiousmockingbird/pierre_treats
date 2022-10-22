@@ -1,0 +1,36 @@
+@{
+	Layout = "_Layout";
+}
+
+@using PierresBakery.Models;
+
+<h3>Details on @Model.TreatName</h3>
+
+<p><strong>Price:</strong> $@Model.Price</p>
+
+@if (Model.JoinEntities.Count == 0)
+{
+	<p>This treat hasn't been related to any flavors yet!</p>
+}
+else
+{
+	<p>This treat is related to the following flavors:</p>
+	<ul>
+	@foreach (var join in Model.JoinEntities)
+	{
+		<li>@Html.ActionLink($"{join.Flavor.FlavorName}", "Details", "Flavors", new {id = join.Flavor.FlavorId})</li>
+		@using (Html.BeginForm("DeleteFlavor", "Treats"))
+		{
+			@Html.Hidden("joinId", (int) @join.TreatFlavorId)
+			<input type="submit" value="Remove flavor" onclick="return confirm('Are you sure you would like to remove the flavor @join.Flavor.FlavorName?')"/>
+		}
+	}
+	</ul>
+}
+@using (Html.BeginForm("Delete", "Treats"))
+{
+	@Html.Hidden("id", (int) @Model.TreatId)
+	<input type="submit" value="Delete treat" onclick="return confirm('Are you sure you would like to delete the trat @Model.TreatName?')"/>
+}
+
+<p>@Html.ActionLink("Edit the details of this treat", "Edit", new {id= Model.TreatId})</p>

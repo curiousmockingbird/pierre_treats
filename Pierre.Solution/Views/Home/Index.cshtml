@@ -3,4 +3,18 @@
 }
 
 <h1>Your MVC webpage!</h1>
-<p>@Html.ActionLink("Create an account", "Index", "Account")</p>
+@if (!User.Identity.IsAuthenticated)
+{
+<p>@Html.ActionLink("Create an account", "Register", "Account")</p>
+<p>@Html.ActionLink("Log in", "Login", "Account")</p>
+}
+else
+{ 
+
+  
+
+  @using (Html.BeginForm("LogOff", "Account"))
+  {
+    <input type="submit" class="btn btn-primary" value="Log out" />
+  }
+}
