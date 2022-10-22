@@ -35,12 +35,12 @@ namespace PierresBakery.Controllers
 		[HttpPost]
 		public async Task<ActionResult> Register (RegisterViewModel model)
 		{
-			var user = new ApplicationUser { UserName = model.UserName, FullName = model.FullName, LastTimeVisiting = model.LastTimeVisiting};
+			var user = new ApplicationUser { UserName = model.UserName, FullName = model.FullName, AccountCreatedOn = model.AccountCreatedOn};
 			IdentityResult result = await _userManager.CreateAsync(user, model.Password);
 			if (result.Succeeded)
 			{
 				await _userManager.AddClaimAsync(user, new Claim("FullName", user.FullName));
-				await _userManager.AddClaimAsync(user, new Claim("LastTimeVisiting", user.LastTimeVisiting.ToString("MM/dd/yyyy")));
+				await _userManager.AddClaimAsync(user, new Claim("AccountCreatedOn", user.AccountCreatedOn.ToString("MM/dd/yyyy")));
 				await _signInManager.SignInAsync(user, isPersistent: true);
 				return RedirectToAction("Index");
 			}

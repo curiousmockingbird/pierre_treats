@@ -9,7 +9,7 @@
 @if (User.Identity.IsAuthenticated)
 {
   <p>Hello @User.GetFullName()</p>
-  <p>Last time visiting us: @User.GetLastTimeVisiting()</p>
+  <p>Last time visiting us: @User.GetAccountCreatedOn()</p>
   
   @using (Html.BeginForm("LogOff", "Account"))
   {

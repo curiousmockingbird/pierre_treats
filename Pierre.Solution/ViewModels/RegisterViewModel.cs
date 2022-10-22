@@ -20,9 +20,9 @@ namespace PierresBakery.ViewModels
 		public string FullName { get; set; }
 
 		[Required]
-		[Display(Name = "Last time by Pierre's")]
+		[Display(Name = "Account created on")]
 		[DataType(DataType.Date)]
-		public DateTime LastTimeVisiting { get; set; }
+		public DateTime AccountCreatedOn { get; set; }
 
 		[Required]
 		[DataType(DataType.Password)]

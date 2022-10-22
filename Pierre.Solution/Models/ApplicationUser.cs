@@ -8,6 +8,6 @@ namespace PierresBakery.Models
     // [PersonalData]
     public string ? FullName { get; set; }
     // [PersonalData]
-    public DateTime LastTimeVisiting { get; set; }
+    public DateTime AccountCreatedOn { get; set; }
   }
 }

@@ -10,9 +10,9 @@ namespace PierresBakery.Extensions
 			var fullName = principal.Claims.FirstOrDefault(c => c.Type == "FullName");
 			return fullName?.Value;
 		}
-		public static string GetLastTimeVisiting(this ClaimsPrincipal principal)
+		public static string GetAccountCreatedOn(this ClaimsPrincipal principal)
 		{
-			var lastTime = principal.Claims.FirstOrDefault(c => c.Type == "LastTimeVisiting");
+			var lastTime = principal.Claims.FirstOrDefault(c => c.Type == "AccountCreatedOn");
 			return lastTime?.Value;
 		}
 	}
