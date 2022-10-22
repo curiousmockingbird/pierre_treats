@@ -1,0 +1,13 @@
+@{
+	Layout = "_Layout";
+}
+
+@model PierresBakery.Models.Flavor
+
+<h3>Add a new flavor: </h3>
+
+@using (Html.BeginForm())
+{
+	<p>Flavor: @Html.TextBoxFor(model => model.FlavorName)</p>
+	<input type="submit" value="Create"/>
+}
