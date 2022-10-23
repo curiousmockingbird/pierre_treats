@@ -8,6 +8,7 @@
 
 @using (Html.BeginForm())
 {
+  @Html.HiddenFor(model => model.TreatId)
 <p>Treat: @Html.TextBoxFor(model => model.TreatName)</p>
 <p>Price: @Html.TextBoxFor(model => model.Price)</p>
 	@Html.Label("Add treat's flavor:")

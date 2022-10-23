@@ -83,7 +83,7 @@ namespace PierresBakery.Controllers
 			List<Flavor> userFlavors = _db.Flavors.Where(entry => entry.User.Id == currentUser.Id).ToList();
 			ViewBag.FlavorId = new SelectList(userFlavors, "FlavorId", "FlavorName");
 
-			return View(userFlavors);
+			return View(thisTreat);
 		}
 
 		[HttpPost]

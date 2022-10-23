@@ -9,10 +9,10 @@
 @if (User.Identity.IsAuthenticated)
 {
   <p>Hello @User.GetFullName()</p>
-  <p>Last time visiting us: @User.GetAccountCreatedOn()</p>
+  <p>Account created on: @User.GetAccountCreatedOn()</p>
   
   <p> @Html.ActionLink("See all treats and flavors!", "Index", "Home")</p>
-  
+
   @using (Html.BeginForm("LogOff", "Account"))
   {
     <input type="submit" class="btn btn-primary" value="Log out" />
